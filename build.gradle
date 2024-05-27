@@ -5,12 +5,12 @@ plugins {
 }
 
 group 'ch.bildspur'
-version '0.6.2'
+version '0.6.3'
 
 sourceCompatibility = 1.8
 
 wrapper {
-    gradleVersion = '6.3'
+    gradleVersion = '8.6'
     distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-bin.zip"
 }
 
@@ -19,21 +19,21 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testImplementation group: 'junit', name: 'junit', version: '4.13.1'
 
     // xml -> not available in java 11
-    compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.0'
-    compile group: 'com.sun.xml.bind', name: 'jaxb-core', version: '2.3.0'
-    compile group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.3.0'
+    implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.0'
+    implementation group: 'com.sun.xml.bind', name: 'jaxb-core', version: '2.3.0'
+    implementation group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.3.0'
 
     // processing
-    testCompile group: 'org.processing', name: 'core', version: '3.3.6'
-    testCompile group: 'org.jogamp.jogl', name: 'jogl-all-main', version: '2.3.2'
-    testCompile group: 'org.jogamp.gluegen', name: 'gluegen-rt-main', version: '2.3.2'
+    testImplementation group: 'org.processing', name: 'core', version: '3.3.6'
+    testImplementation group: 'org.jogamp.jogl', name: 'jogl-all-main', version: '2.3.2'
+    testImplementation group: 'org.jogamp.gluegen', name: 'gluegen-rt-main', version: '2.3.2'
 }
 
 configurations {
-    jar.archiveName = "artnet4j-${version}.jar"
+    jar.archiveBaseName = "artnet4j-${version}.jar"
 }
 
 task sourcesJar(type: Jar) {
@@ -47,14 +47,14 @@ task javadocJar(type: Jar) {
 }
 
 task fatJar(type: Jar) {
-    archiveName = "artnet4j-${version}.jar"
+    archiveBaseName = "artnet4j-${version}.jar"
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
     with jar
 }
 
-signing {
-    sign publishing.publications
-}
+//signing {
+//    sign publishing.publications
+//}
 
 publishing {
     repositories {

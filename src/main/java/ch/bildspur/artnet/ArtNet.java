@@ -67,7 +67,7 @@ public class ArtNet {
         server.addListener(new ArtNetServerEventAdapter() {
 
             @Override
-            public void artNetPacketReceived(ArtNetPacket packet) {
+            public void artNetPacketReceived(InetAddress sourceAddress, ArtNetPacket packet) {
                 logger.fine("packet received: " + packet.getType());
                 if (discovery != null
                         && packet.getType() == PacketType.ART_POLL_REPLY) {

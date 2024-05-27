@@ -102,7 +102,7 @@ public class ArtNetServer extends ArtNetNode implements Runnable {
                                 (ArtPollPacket) packet);
                     }
                     for (ArtNetServerListener l : listeners) {
-                        l.artNetPacketReceived(packet);
+                        l.artNetPacketReceived(receivedPacket.getAddress(), packet);
                     }
                 }
             }
@@ -139,7 +139,8 @@ public class ArtNetServer extends ArtNetNode implements Runnable {
         */
 
         if(defaultReplyPacket != null)
-            broadcastPacket(defaultReplyPacket);
+            unicastPacket(defaultReplyPacket, inetAddress);
+            //broadcastPacket(defaultReplyPacket);
     }
 
     public void setBroadcastAddress(String address) {

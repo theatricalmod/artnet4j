@@ -23,6 +23,8 @@ import java.util.logging.Logger;
 
 public abstract class ArtNetPacket {
 
+    public static final int HEADER_PROTOCOL_OFFSET = 12;
+
     public static final byte[] HEADER = "Art-Net\0".getBytes();
     public static final byte[] ART_EXT_HEADER = "Art-Ext\0".getBytes();
 

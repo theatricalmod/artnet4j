@@ -82,7 +82,7 @@ public class ArtNetClient {
             server.addListener(
                     new ArtNetServerEventAdapter() {
                         @Override
-                        public void artNetPacketReceived(ArtNetPacket packet) {
+                        public void artNetPacketReceived(InetAddress sourceAddress, ArtNetPacket packet) {
                             onPacketReceived(packet);
                         }
                     });

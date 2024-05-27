@@ -41,6 +41,8 @@ package ch.bildspur.artnet.events;
 import ch.bildspur.artnet.ArtNetServer;
 import ch.bildspur.artnet.packets.ArtNetPacket;
 
+import java.net.InetAddress;
+
 public class ArtNetServerEventAdapter implements ArtNetServerListener {
 
     @Override
@@ -49,7 +51,7 @@ public class ArtNetServerEventAdapter implements ArtNetServerListener {
     }
 
     @Override
-    public void artNetPacketReceived(ArtNetPacket packet) {
+    public void artNetPacketReceived(InetAddress sourceAddress, ArtNetPacket packet) {
 
     }
 

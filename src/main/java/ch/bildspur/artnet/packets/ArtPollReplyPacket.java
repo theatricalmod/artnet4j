@@ -210,13 +210,11 @@ public class ArtPollReplyPacket extends ArtNetPacket {
         // ports
         for (int i = 0; i < numPorts; i++) {
             data.setInt8(ports[i].getData(), 174 + i);
+            data.setInt8(ports[i].getInputStatus(), 178 + i);
+            data.setInt8(ports[i].getOutputStatus(), 182 + i);
+            data.setInt8(ports[i].getInputUniverse(), 186 + i);
+            data.setInt8(ports[i].getOutputUniverse(), 190 + i);
         }
-
-        // dmx ins
-        data.setByteChunk(dmxIns, 186, dmxIns.length);
-
-        // dmx outs
-        data.setByteChunk(dmxIns, 190, dmxIns.length);
 
         // style
         data.setInt8(nodeStyle.getStyleID(), 200);

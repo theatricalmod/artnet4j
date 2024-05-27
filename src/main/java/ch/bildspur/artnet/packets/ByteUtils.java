@@ -68,6 +68,14 @@ public class ByteUtils {
         return buffer;
     }
 
+    public final byte[] getByteChunk(byte[] buffer, int offset, int destPos, int len) {
+        if (buffer == null) {
+            buffer = new byte[len];
+        }
+        System.arraycopy(data, offset, buffer, destPos, len);
+        return buffer;
+    }
+
     public byte[] getBytes() {
         return data;
     }
@@ -106,6 +114,14 @@ public class ByteUtils {
 
     public final int getLength() {
         return data.length;
+    }
+
+    public final short calculateChecksum(){
+        int checksum = 0;
+        for (byte b : data) {
+            checksum += (b & 0xFF); // ensure b is treated as an unsigned byte
+        }
+        return (short) (checksum & 0xFFFF); // ensure the checksum is 16-bit
     }
 
     public final void setByteChunk(byte[] buffer, int offset) {

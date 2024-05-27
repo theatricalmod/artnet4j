@@ -22,11 +22,13 @@ package ch.bildspur.artnet.events;
 import ch.bildspur.artnet.ArtNetServer;
 import ch.bildspur.artnet.packets.ArtNetPacket;
 
+import java.net.InetAddress;
+
 public interface ArtNetServerListener {
 
     void artNetPacketBroadcasted(ArtNetPacket packet);
 
-    void artNetPacketReceived(ArtNetPacket packet);
+    void artNetPacketReceived(InetAddress sourceAddress, ArtNetPacket packet);
 
     void artNetPacketUnicasted(ArtNetPacket packet);
 

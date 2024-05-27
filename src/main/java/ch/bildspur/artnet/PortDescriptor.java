@@ -24,9 +24,20 @@ public class PortDescriptor {
     protected boolean canOutput;
     protected boolean canInput;
     protected PortType type;
-
+    protected byte inputStatus, outputStatus;
+    protected int inputUniverse, outputUniverse;
     public PortDescriptor()
     {
+    }
+
+    public PortDescriptor(boolean canOutput, boolean canInput, PortType type, byte inputStatus, byte outputStatus, int inputUniverse, int outputUniverse) {
+        this.canOutput = canOutput;
+        this.canInput = canInput;
+        this.type = type;
+        this.inputStatus = inputStatus;
+        this.outputStatus = outputStatus;
+        this.inputUniverse = inputUniverse;
+        this.outputUniverse = outputUniverse;
     }
 
     public PortDescriptor(int id) {
@@ -60,6 +71,21 @@ public class PortDescriptor {
     public PortType getType() {
         return type;
     }
+    public byte getInputStatus() {
+        return inputStatus;
+    }
+
+    public byte getOutputStatus() {
+        return outputStatus;
+    }
+
+    public int getInputUniverse() {
+        return inputUniverse;
+    }
+
+    public int getOutputUniverse() {
+        return outputUniverse;
+    }
 
     public int getData()
     {
@@ -85,5 +111,21 @@ public class PortDescriptor {
 
     public void setType(PortType type) {
         this.type = type;
+    }
+
+    public void setInputStatus(byte inputStatus) {
+        this.inputStatus = inputStatus;
+    }
+
+    public void setOutputStatus(byte outputStatus) {
+        this.outputStatus = outputStatus;
+    }
+
+    public void setInputUniverse(int inputUniverse) {
+        this.inputUniverse = inputUniverse;
+    }
+
+    public void setOutputUniverse(int outputUniverse) {
+        this.outputUniverse = outputUniverse;
     }
 }
